@@ -11,20 +11,20 @@ public class MatrixCheck {
                 for (int i = 0; i < board.length; i++) {
                     int count = 0;
                     for (int j = 0; j < board.length; j++) {
-                        if(board[i][j] == 'X') count++;
+                        if (board[i][j] == 'X') count++;
                     }
-                    if(count == 5) {
+                    if (count == 5) {
                         result = true;
                         break;
                     }
                 }
                 for (int i = 0; i < board.length; i++) {
-                    if(result) break;
+                    if (result) break;
                     int count = 0;
                     for (int j = 0; j < board.length; j++) {
-                        if(board[j][i] == 'X') count++;
+                        if (board[j][i] == 'X') count++;
                     }
-                    if(count ==5){
+                    if (count == 5) {
                         result = true;
                         break;
                     }
