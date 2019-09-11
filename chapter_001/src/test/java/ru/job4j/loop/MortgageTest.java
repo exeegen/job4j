@@ -9,14 +9,14 @@ public class MortgageTest {
     @Test
     public void when1Year() {
         Mortgage mortgage = new Mortgage();
-        int year = mortgage.year(100, 120, 50);
-        assertThat(year, is(2));
+        int year = mortgage.year(1000, 100, 1);
+        assertThat(year, is(1));
     }
 
     @Test
     public void when2Year() {
         Mortgage mortgage = new Mortgage();
-        int year = mortgage.year(100, 70, 50);
-        assertThat(year, is(4));
+        int year = mortgage.year(100, 10, 50);
+        assertThat(year, is(2));
     }
 }
