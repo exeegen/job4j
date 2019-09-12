@@ -3,34 +3,39 @@ package ru.job4j.array;
 public class MatrixCheck {
     public static boolean isWin(char[][] board) {
         boolean result = false;
+        boolean start = false;
+        int countG = 0;
+        int countV = 0;
+        int v = 0;
         for (int row = 0; row < board.length; row++) {
             for (int cell = 0; cell < board.length; cell++) {
                 char sign = board[row][cell];
                 System.out.print(sign + " ");
                 //for () { проверить последовательность.
-                for (int i = 0; i < board.length; i++) {
-                    int count = 0;
-                    for (int j = 0; j < board.length; j++) {
-                        if (board[i][j] == 'X') count++;
+                if (sign == 'X') {
+                    if (cell == 0) {
+                        start = true;
+                        countG++;
                     }
-                    if (count == 5) {
-                        result = true;
-                        break;
+                    if (start && cell > 0) {
+                        countG++;
+                    }
+                    if (row == 0) {
+                        v = cell;
+                        countV++;
+                    }
+                    if (cell == v && row > 0) {
+                        countV++;
                     }
                 }
-                for (int i = 0; i < board.length; i++) {
-                    if (result) break;
-                    int count = 0;
-                    for (int j = 0; j < board.length; j++) {
-                        if (board[j][i] == 'X') count++;
-                    }
-                    if (count == 5) {
-                        result = true;
-                        break;
-                    }
+                if (sign == '_') {
+                    start = false;
                 }
             }
             System.out.println();
+        }
+        if (countV == 5 || countG == 5) {
+            result = true;
         }
         return result;
     }
