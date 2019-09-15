@@ -88,6 +88,8 @@ public class StartUI {
                     break;
                 case EXIT:
                     exit = true;
+                default:
+                    continue;
             }
         }
     }
@@ -124,7 +126,6 @@ public class StartUI {
         Item item = this.tracker.findById(id);
         if (item == null) {
             System.out.println("------------ Заявка с Id : " + id + " не обнаружена -----------");
-            ;
             return;
         }
 
@@ -181,15 +182,15 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println("Меню." +
-                "0. Add new Item\n" +
-                "1. Show all items\n" +
-                "2. Edit item\n" +
-                "3. Delete item\n" +
-                "4. Find item by Id\n" +
-                "5. Find items by name\n" +
-                "6. Exit Program\n" +
-                "Select: ");
+        System.out.println("Меню."
+                + "0. Add new Item\n"
+                + "1. Show all items\n"
+                + "2. Edit item\n"
+                + "3. Delete item\n"
+                + "4. Find item by Id\n"
+                + "5. Find items by name\n"
+                + "6. Exit Program\n"
+                + "Select: ");
     }
 
     /**

@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
 public class Ball {
-    String go(){
+    String go() {
         return "went from ";
     }
 }

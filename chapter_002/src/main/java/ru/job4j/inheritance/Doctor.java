@@ -4,14 +4,15 @@ public class Doctor extends Profession {
     private String hospital;
 
 
-    public String getHospital(){
+    public String getHospital() {
         return hospital;
     }
 
-    private String diagnose(){
+    private String diagnose() {
         return "diagnose";
     }
-    public String getCash(){
+
+    public String getCash() {
         return diagnose();
     }
 }

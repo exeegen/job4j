@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -32,7 +33,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenDelateIdThenReturnNextName(){
+    public void whenDelateIdThenReturnNextName() {
         Tracker tracker = new Tracker();
         Item i1 = new Item("test1");
         Item i2 = new Item("test2");
@@ -44,7 +45,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenFindAll(){
+    public void whenFindAll() {
         Tracker tracker = new Tracker();
         Item i1 = new Item("test1");
         Item i2 = new Item("test2");
@@ -55,7 +56,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenFindByName(){
+    public void whenFindByName() {
         Tracker tracker = new Tracker();
         Item i1 = new Item("test1");
         Item i2 = new Item("test1");
@@ -68,7 +69,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenFindById(){
+    public void whenFindById() {
         Tracker tracker = new Tracker();
         Item i1 = new Item("test1");
         Item i2 = new Item("test2");

@@ -38,7 +38,7 @@ public class Tracker {
     /**
      * Метод заменяет заявку по ключу.
      *
-     * @param id Уникальный ключ.
+     * @param id   Уникальный ключ.
      * @param item заявка.
      * @return возращает True при успеха.
      */
@@ -65,7 +65,7 @@ public class Tracker {
             if (items[i].getId().equals(id)) {
                 items[i] = null;
                 success = true;
-                System.arraycopy(items, i + 1, items, i, position - i -1);
+                System.arraycopy(items, i + 1, items, i, position - i - 1);
                 items[--position] = null;
             }
         }

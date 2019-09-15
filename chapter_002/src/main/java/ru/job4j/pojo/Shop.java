@@ -8,7 +8,7 @@ public class Shop {
             if (products[i] != null) {
                 products[i - 1] = products[i];
             } else {
-                products[i-1] = null;
+                products[i - 1] = null;
                 break;
             }
         }
@@ -16,7 +16,7 @@ public class Shop {
     }
 
     public static void main(String[] args) {
-        Product products[] = new Product[5];
+        Product[] products = new Product[5];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Butter", 12);
         products[2] = new Product("Bread", 4);
