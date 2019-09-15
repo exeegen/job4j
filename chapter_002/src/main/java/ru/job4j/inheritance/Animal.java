@@ -5,8 +5,7 @@ public class Animal {
     String name;
 
     public Animal(){
-        // вызов конструктора Object автоматически
-        System.out.println(Animal.class.getSimpleName());
+        System.out.println("Animal");
     }
 
     public Animal(String name){
