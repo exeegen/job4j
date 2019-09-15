@@ -119,7 +119,7 @@ public class Tracker {
     public Item findById(String id) {
         Item item = null;
         for (Item i : items) {
-            if (i == null) {
+            if (i == null || i.getId() == null) {
                 break;
             } else if (i.getId().equals(id)) {
                 item = i;
