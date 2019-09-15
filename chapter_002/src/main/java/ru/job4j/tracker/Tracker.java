@@ -91,9 +91,18 @@ public class Tracker {
      * @return результирующий массив заявок с одинаковыми именами.
      */
     public Item[] findByName(String key) {
-        Item[] newItems = new Item[position];
+
         int index = 0;
-        for (int i = 0; i < newItems.length; i++) {
+        for (int i = 0; i < position; i++) {
+            if (items[i].getName().equals(key)) {
+                index++;
+            }
+        }
+
+        Item[] newItems = new Item[index];
+        index = 0;
+
+        for (int i = 0; i < position; i++) {
             if (items[i].getName().equals(key)) {
                 newItems[index++] = items[i];
             }
