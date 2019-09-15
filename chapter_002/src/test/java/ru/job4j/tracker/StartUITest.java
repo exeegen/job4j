@@ -29,7 +29,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenDeleteItemThenTrackerHasItems(){
+    public void whenDeleteItemThenTrackerHasItems() {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test1", "beleberda"));
         Item item2 = tracker.add(new Item("test2", "beleberda dada"));
