@@ -124,21 +124,21 @@ public class StartUI {
         System.out.println("------------ Edit item --------------");
         String id = this.input.ask("Введите id заявки :");
         Item item = this.tracker.findById(id);
-        if(item == null){
+        if (item == null) {
             System.out.println("------------ Заявка с Id : " + id + " не обнаружена -----------");
             return;
-        }
-        else{
+        } else {
             System.out.println("------------ Заявка обнаружена -----------");
             System.out.println(item + "\n");
         }
+        
         String name = this.input.ask("Введите новое имя заявки :");
         String desc = this.input.ask("Введите новое описание заявки :");
         item = new Item(name, desc);
 
-        if(this.tracker.replace(id, item)) {
-        System.out.println("------------ Заявка с Id : " + id + " успешно отредактирована -----------");}
-        else {
+        if (this.tracker.replace(id, item)) {
+            System.out.println("------------ Заявка с Id : " + id + " успешно отредактирована -----------");
+        } else {
             System.out.println("------------ ошибка редактирования -----------");
         }
     }

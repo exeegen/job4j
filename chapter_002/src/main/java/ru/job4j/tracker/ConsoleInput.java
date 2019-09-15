@@ -7,6 +7,6 @@ public class ConsoleInput implements Input {
 
     public String ask(String str) {
         System.out.println(str);
-        return scanner.next();
+        return scanner.nextLine();
     }
 }

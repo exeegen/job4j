@@ -29,13 +29,14 @@ public class StartUITest {
     }
 
     @Test
-    public void whenDeleteItemThenTrackerHasNextValue(){
+    public void whenDeleteItemThenTrackerHasItems(){
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test1", "beleberda"));
         Item item2 = tracker.add(new Item("test2", "beleberda dada"));
+        Item[] items = new Item[]{item2};
         Input input = new StubInput(new String[]{"3", item1.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is(item2.getName()));
+        assertThat(tracker.findAll(), is(items));
     }
 
 }
