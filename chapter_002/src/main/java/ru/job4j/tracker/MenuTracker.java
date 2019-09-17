@@ -15,6 +15,9 @@ public class MenuTracker {
     /**
      * @param хранит ссылку на массив типа UserAction.
      */
+
+    private StartUI sui;
+
     private List<UserAction> actions = new ArrayList<>();
 
     /**
@@ -23,9 +26,10 @@ public class MenuTracker {
      * @param input   объект типа Input
      * @param tracker объект типа Tracker
      */
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, StartUI sui) {
         this.input = input;
         this.tracker = tracker;
+        this.sui = sui;
     }
 
     /**
@@ -47,7 +51,7 @@ public class MenuTracker {
         this.actions.add(new DeleteItem(3, "Delete item"));
         this.actions.add(new FindItemById(4, "Find item by Id"));
         this.actions.add(new FindItemsByName(5, "Find items by name"));
-        this.actions.add(new ExitProgram(6, "Exit Program"));
+        this.actions.add(new ExitProgram(6, "Exit Program", sui));
     }
 
     /**

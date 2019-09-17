@@ -4,10 +4,12 @@ public class ExitProgram implements UserAction{
 
     private final int EXIT;
     private final String INFO;
+    private StartUI sui;
 
-    public ExitProgram(int EXIT, String INFO) {
+    public ExitProgram(int EXIT, String INFO, StartUI sui) {
         this.EXIT = EXIT;
         this.INFO = INFO;
+        this.sui = sui;
     }
 
     @Override
@@ -17,11 +19,7 @@ public class ExitProgram implements UserAction{
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        /*
-        здесь делаем input.close() и tracker.save()
-         */
-        System.out.println("завершение сеанса");
-        System.exit(0);
+        sui.setEnd();
     }
 
     @Override

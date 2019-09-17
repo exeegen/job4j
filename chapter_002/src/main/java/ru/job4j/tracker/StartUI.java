@@ -12,6 +12,8 @@ public class StartUI {
      */
     private final Tracker tracker;
 
+    private boolean end = false;
+
     /**
      * Конструтор инициализирующий поля.
      *
@@ -23,16 +25,21 @@ public class StartUI {
         this.tracker = tracker;
     }
 
+    public void setEnd() {
+        end = true;
+    }
+
+
     /**
      * Основой цикл программы.
      */
     public void init() {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        MenuTracker menu = new MenuTracker(this.input, this.tracker, this);
         menu.fillActions();
-        do {
+        while (!end) {
             menu.show();
             menu.select(Integer.valueOf(input.ask("select:")));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        }
     }
 
     /**
