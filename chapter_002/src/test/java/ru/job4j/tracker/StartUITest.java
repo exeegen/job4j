@@ -15,15 +15,21 @@ public class StartUITest {
 
     private final PrintStream pstr = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private String menu = "Меню."
-            + "0. Add new Item\n"
-            + "1. Show all items\n"
-            + "2. Edit item\n"
-            + "3. Delete item\n"
-            + "4. Find item by Id\n"
-            + "5. Find items by name\n"
-            + "6. Exit Program\n"
-            + "Select: ";
+    private String menu = "0 Add program"
+            + System.lineSeparator()
+            + "1 Show all items"
+            + System.lineSeparator()
+            + "2 Edit item"
+            + System.lineSeparator()
+            + "3 Delete item"
+            + System.lineSeparator()
+            + "4 Find item by Id"
+            + System.lineSeparator()
+            + "5 Find items by name"
+            + System.lineSeparator()
+            + "6 Exit Program"
+            + System.lineSeparator();
+    //  + "Select: ";
 
     @Before
     public void beforTesting() {
@@ -38,7 +44,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});   //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
@@ -50,7 +56,7 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
         //создаём StubInput с последовательностью действий(производим замену заявки)
-        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "fds", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
@@ -74,14 +80,13 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("test1", "beleberda"));
         Item item2 = tracker.add(new Item("test2", "beleberda dada"));
 
-        Input input = new StubInput(new String[]{"1", "y"});
+        Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
 
         String resalt = new String(out.toByteArray());
 
         StringBuilder exp = new StringBuilder()
                 .append(menu)
-                .append(System.lineSeparator())
                 .append("------------ Show all items --------------")
                 .append(System.lineSeparator())
                 .append(item1)
@@ -90,9 +95,7 @@ public class StartUITest {
                 .append(System.lineSeparator())
                 .append("------------ end operation --------------")
                 .append(System.lineSeparator())
-                .append(menu)
-                .append(System.lineSeparator());
-
+                .append(menu);
         assertThat(resalt, is(exp.toString()));
     }
 
@@ -109,14 +112,11 @@ public class StartUITest {
 
         StringBuilder exp = new StringBuilder()
                 .append(menu)
-                .append(System.lineSeparator())
                 .append("------------ Find item by Id --------------")
                 .append(System.lineSeparator())
                 .append(item1)
                 .append(System.lineSeparator())
-                .append(menu)
-                .append(System.lineSeparator());
-
+                .append(menu);
         assertThat(resalt, is(exp.toString()));
     }
 
@@ -134,7 +134,6 @@ public class StartUITest {
 
         StringBuilder exp = new StringBuilder()
                 .append(menu)
-                .append(System.lineSeparator())
                 .append("------------ Find items by name --------------")
                 .append(System.lineSeparator())
                 .append(item1)
@@ -143,8 +142,7 @@ public class StartUITest {
                 .append(System.lineSeparator())
                 .append("------------ end operation --------------")
                 .append(System.lineSeparator())
-                .append(menu)
-                .append(System.lineSeparator());
+                .append(menu);
 
         assertThat(resalt, is(exp.toString()));
     }
