@@ -13,9 +13,9 @@ public class ConsoleInput implements Input {
 
     public int ask(String question, List<Integer> range){
         int key = Integer.valueOf(this.ask(question));
-        if(range.contains(key)){
-            return key;
+        if(!range.contains(key)){
+            throw new MenuOutException("Введите пункт меню в диапазоне 0 - " + (range.size()-1) + " : ");
         }
-        else throw new MenuOutException("Введите пункт меню в диапазоне 0 - " + (range.size()-1) + " : ");
+        return key;
     }
 }
