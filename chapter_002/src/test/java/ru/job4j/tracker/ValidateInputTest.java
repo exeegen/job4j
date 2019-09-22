@@ -18,18 +18,15 @@ import static org.hamcrest.Matchers.is;
 public class ValidateInputTest {
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
     private final PrintStream out = System.out;
-    private final ByteArrayInputStream inputStream = new ByteArrayInputStream(("ugjhjk"
-            + System.lineSeparator()
-            + "2"
-            + System.lineSeparator()
-            + "1"
-            + System.lineSeparator()).getBytes());
+    private ByteArrayInputStream inputStream;
     private final InputStream in = System.in;
+    private List<Integer> list = new ArrayList<>();
 
     @Before
     public void loadMem() {
         System.setOut(new PrintStream(this.mem));
-        System.setIn(inputStream);
+        list.add(0);
+        list.add(1);
     }
 
     @After
@@ -40,18 +37,31 @@ public class ValidateInputTest {
 
     @Test
     public void whenInvalidInput() {
-        ValidateInput input = new ValidateInput(
-                new ConsoleInput());
-        List<Integer> list = new ArrayList<>();
-        list.add(0);
-        list.add(1);
+        inputStream = new ByteArrayInputStream(("ugjhjk"
+                + System.lineSeparator()
+                + "1"
+                + System.lineSeparator()).getBytes());
+        System.setIn(inputStream);
+        ValidateInput input = new ValidateInput(new ConsoleInput());
         input.ask("Enter", list);
-
         assertThat(this.mem.toString(), is("Enter"
                 + System.lineSeparator()
                 + "Введите корректное значение"
                 + System.lineSeparator()
                 + "Enter"
+                + System.lineSeparator()));
+    }
+
+    @Test
+    public void whenMenuOutException() {
+        inputStream = new ByteArrayInputStream(("6"
+                + System.lineSeparator()
+                + "1"
+                + System.lineSeparator()).getBytes());
+        System.setIn(inputStream);
+        ValidateInput input = new ValidateInput(new ConsoleInput());
+        input.ask("Enter", list);
+        assertThat(this.mem.toString(), is("Enter"
                 + System.lineSeparator()
                 + "Введите пункт меню в диапазоне 0 - 1 : "
                 + System.lineSeparator()
