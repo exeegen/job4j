@@ -11,10 +11,10 @@ public class ConsoleInput implements Input {
         return scanner.nextLine();
     }
 
-    public int ask(String question, List<Integer> range){
+    public int ask(String question, List<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
-        if(!range.contains(key)){
-            throw new MenuOutException("Введите пункт меню в диапазоне 0 - " + (range.size()-1) + " : ");
+        if (!range.contains(key)) {
+            throw new MenuOutException("Введите пункт меню в диапазоне 0 - " + (range.size() - 1) + " : ");
         }
         return key;
     }

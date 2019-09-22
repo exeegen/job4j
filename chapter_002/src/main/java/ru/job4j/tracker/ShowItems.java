@@ -1,20 +1,12 @@
 package ru.job4j.tracker;
+
 /**
  * class all items.
  */
-public class ShowItems implements UserAction{
+public class ShowItems extends BaseAction {
 
-    private final int SHOW;
-    private final String INFO;
-
-    public ShowItems(int SHOW, String INFO) {
-        this.SHOW = SHOW;
-        this.INFO = INFO;
-    }
-
-    @Override
-    public int key() {
-        return SHOW;
+    public ShowItems(int add, String info) {
+        super(add, info);
     }
 
     /**
@@ -27,10 +19,5 @@ public class ShowItems implements UserAction{
             System.out.println(i);
         }
         System.out.println("------------ end operation --------------");
-    }
-
-    @Override
-    public String info() {
-        return key() + " " + INFO;
     }
 }

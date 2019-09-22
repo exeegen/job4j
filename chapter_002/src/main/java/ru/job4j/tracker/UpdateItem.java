@@ -1,20 +1,12 @@
 package ru.job4j.tracker;
+
 /**
  * Edit item
  */
-public class UpdateItem implements UserAction{
+public class UpdateItem extends BaseAction {
 
-    private final int EDIT;
-    private final String INFO;
-
-    public UpdateItem(int EDIT, String INFO) {
-        this.EDIT = EDIT;
-        this.INFO = INFO;
-    }
-
-    @Override
-    public int key() {
-        return EDIT;
+    public UpdateItem(int add, String info) {
+        super(add, info);
     }
 
     /**
@@ -43,10 +35,5 @@ public class UpdateItem implements UserAction{
         } else {
             System.out.println("------------ ошибка редактирования -----------");
         }
-    }
-
-    @Override
-    public String info() {
-        return key() + " " + INFO;
     }
 }
